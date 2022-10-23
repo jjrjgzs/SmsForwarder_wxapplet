@@ -1,0 +1,15 @@
+{
+"navigationBarTextStyle":"white",
+"navigationBarBackgroundColor":"#0088FF",
+"navigationBarTitleText":"短信",
+"enablePullDownRefresh":true,
+"backgroundColor":"#eeeeee",
+"backgroundTextStyle":"dark",
+"usingComponents":{
+"mb_navBar":"/libs/mb_navBar/mb_navBar",
+"mb_input":"/libs/mb_input/mb_input",
+"mb_dh1List":"/libs/mb_dh1List/mb_dh1List",
+"mb_image":"/libs/mb_image/mb_image",
+"mb_bottomLoading":"/libs/mb_bottomLoading/mb_bottomLoading"
+}
+}

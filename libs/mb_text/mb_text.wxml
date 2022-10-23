@@ -1,0 +1,1 @@
+<text wx:if="{{show}}" style="{{mb_style_extra}}" space="emsp" bindtap="_onClick">{{value}}</text>

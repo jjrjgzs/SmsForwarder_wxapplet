@@ -1,0 +1,15 @@
+{
+"navigationBarTextStyle":"white",
+"navigationBarBackgroundColor":"#0088FF",
+"navigationBarTitleText":"远程发送短信",
+"enablePullDownRefresh":false,
+"backgroundColor":"#eeeeee",
+"backgroundTextStyle":"dark",
+"usingComponents":{
+"mb_text":"/libs/mb_text/mb_text",
+"mb_input":"/libs/mb_input/mb_input",
+"mb_textarea":"/libs/mb_textarea/mb_textarea",
+"mb_button":"/libs/mb_button/mb_button",
+"mb_radio":"/libs/mb_radio/mb_radio"
+}
+}

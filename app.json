@@ -1,0 +1,58 @@
+{
+  "debug": false, 
+  "window": {
+  }, 
+  "pages": [
+    "pages/index",
+"pages/dh",
+"pages/sz",
+"pages/txl",
+"pages/dx",
+"pages/fj",
+"pages/ck"
+  ], 
+  "networkTimeout": {
+    "connectSocket": 60000, 
+    "request": 60000, 
+    "downloadFile": 60000, 
+    "uploadFile": 60000
+  }, 
+  "sitemapLocation": "sitemap.json",
+"tabBar": {
+"backgroundColor":"#FFFFFF",
+"color":"#7A7E83",
+"selectedColor":"#3CC51F",
+"borderStyle":"black",
+"list":[
+{
+"pagePath":"pages/index",
+"text":"首页",
+"iconPath":"/images/s.png",
+"selectedIconPath":"/images/s1.png"
+},
+{
+"pagePath":"pages/dh",
+"text":"电话",
+"iconPath":"/images/dh.png",
+"selectedIconPath":"/images/dh1.png"
+},
+{
+"pagePath":"pages/dx",
+"text":"短信",
+"iconPath":"/images/d1.png",
+"selectedIconPath":"/images/d.png"
+},
+{
+"pagePath":"pages/txl",
+"text":"话簿",
+"iconPath":"/images/txl.png",
+"selectedIconPath":"/images/txl1.png"
+},
+{
+"pagePath":"pages/sz",
+"text":"设置",
+"iconPath":"/images/z.png",
+"selectedIconPath":"/images/z1.png"
+}]
+}
+}

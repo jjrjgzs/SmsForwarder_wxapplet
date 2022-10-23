@@ -1,0 +1,3 @@
+    <view class="navbar" style="background:{{backColor}};" hidden="{{!show}}" > 
+        <text wx:for="{{navbarItems}}" data-idx="{{index}}" class="item" style="font-size:{{fontSize}};color:{{currentTab==index ? activeColor : '#000000'}};border-bottom:{{currentTab==index ? '8rpx solid ' + activeColor : '0px'}}" wx:key="unique" bindtap="_navbarTap">{{item}}</text> 
+    </view>

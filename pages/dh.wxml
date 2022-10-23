@@ -1,0 +1,20 @@
+<view class="container">
+
+	<mb_navBar id="mb_navBar1" show="{{true}}" backColor="#FFFFFF" activeColor="#007AFF" fontSize="32rpx" bindnavbarTap="顶部选项卡1项目被单击" />
+
+	<view hidden="{{mb_freePanel[0]}}" style="margin:10px 10px 0px 10px;background-color:#FFFFFF;width:auto;height:80rpx;position:relative;border: 1px solid #E9E9E9;border-radius: 15px;">
+		<mb_image id="mb_image1" mb_mode="scaleToFill" mb_style="position:absolute;top:20rpx;left:660rpx;width:40rpx;height:40rpx;border-radius:0px" show="{{true}}" path="/images/icongbb.png" bindonClick="图片框1被单击" />
+
+
+		<view style="position:absolute;top:8rpx;left:10rpx;width:640rpx;height:64rpx;display:flex;flex-direction:row;align-items:center;border-style:solid;border-width:1px;border-color:#FFFFFF;border-radius:5px;box-sizing:border-box;background-color:#FFFFFF">
+			<view style="display:flex;width:100%;height:auto;flex-direction:row">
+				<icon class="icon-small" type="search" size="30rpx" style="align-self:center;margin-left:10rpx"/>
+				<mb_input id="mb_input1" readOnly="{{false}}" style="flex:1;align-self:center;height:auto" mb_style="height:auto;font-size:30rpx;padding:6rpx;color:#000000" type="text" placeholder="输入手机号" show="{{true}}" password="{{false}}" confirmtype="search" bindonInput="编辑框1按下某键" />
+			</view>
+		</view>
+	</view>
+
+	<mb_dhList id="mb_dhList1" show="{{true}}" bindonItemTap="电话列表1项目被单击" />
+
+	<mb_bottomLoading id="mb_bottomLoading1" />
+</view>

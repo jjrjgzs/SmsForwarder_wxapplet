@@ -1,0 +1,16 @@
+{
+"navigationBarTextStyle":"white",
+"navigationBarBackgroundColor":"#0088FF",
+"navigationBarTitleText":"设备信息",
+"enablePullDownRefresh":true,
+"backgroundColor":"#eeeeee",
+"backgroundTextStyle":"dark",
+"usingComponents":{
+"mb_navBar":"/libs/mb_navBar/mb_navBar",
+"mb_messagelist":"/libs/mb_messagelist/mb_messagelist",
+"mb_settinglist":"/libs/mb_settinglist/mb_settinglist",
+"mb_text":"/libs/mb_text/mb_text",
+"mb_input":"/libs/mb_input/mb_input",
+"mb_button":"/libs/mb_button/mb_button"
+}
+}

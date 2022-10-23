@@ -1,0 +1,12 @@
+<view class="setting_list" hidden="{{!show}}" >
+    <block wx:for="{{items}}" wx:key="item" >
+        <view class="item"  data-index="{{index}}" bindtap="_optionTap">
+            <image src="{{item.path}}" class="image_left"/>
+            <text class="title">{{item.title}}</text>
+            <switch class="switch_right"  color="{{switchColor}}" checked="{{item.check}}" wx:if="{{item.switch}}" data-index="{{index}}" bindchange="_switchChange"/>
+            <image src="/images/setting_list_right.png" class="image_right"/>
+        </view>
+        <view  class="line-wide" wx:if="{{item.wide}}"></view>
+        <view  class="line-narrow" wx:if="{{!item.wide}}" ></view>            
+    </block>
+</view>

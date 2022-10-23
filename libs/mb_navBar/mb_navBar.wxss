@@ -1,0 +1,16 @@
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    flex: none;
+    display: flex;
+    border-bottom: 1rpx solid #DFDFDF;
+    z-index:998;
+}
+.navbar .item{
+    position: relative;
+    flex: auto;
+    text-align: center;
+    line-height: 80rpx;
+}

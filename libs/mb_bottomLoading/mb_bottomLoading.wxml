@@ -1,0 +1,7 @@
+<block wx:if="{{showloading}}">
+  <view wx:if="{{isloading}}" class="show_loading">
+    <image src="/images/mb_bottomLoading.gif"></image>
+    <text>{{loadingTxt}}</text>
+  </view>
+  <view wx:else class="show_loading">{{finishTxt}}</view>
+</block>

@@ -1,0 +1,12 @@
+<view hidden="{{!show}}">
+	<block wx:for="{{items}}" wx:key="item">
+		<view style="margin:10px;background-color:#FFFFFF;width:auto;height:116rpx;box-sizing:border-box;position:relative;border: 1px solid #C0C0C0;border-radius: 5px;overflow: hidden;" data-index="{{index}}" bindtap="onItemTap">
+			<image mode="aspectFit" style="position:absolute;top:8rpx;left:4rpx;width:100rpx;height:100rpx;border-radius:10px" src="{{item.image1}}" />
+			<text style="position:absolute;top:14rpx;left:114rpx;width:226rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;background-color:;color:#000000;" >{{item.text1}}</text>
+			<text style="position:absolute;top:62rpx;left:114rpx;width:226rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;background-color:;color:#000000;" >{{item.text2}}</text>
+			<text style="position:absolute;top:14rpx;left:350rpx;width:294rpx;height:38rpx;line-height:38rpx;text-align:right;font-size:26rpx;background-color:;color:#808080;" >{{item.text3}}</text>
+			<image mode="scaleToFill" style="position:absolute;top:10rpx;left:660rpx;width:40rpx;height:40rpx;border-radius:1px" src="{{item.image2}}" />
+			<text style="position:absolute;top:62rpx;left:350rpx;width:294rpx;height:38rpx;line-height:38rpx;text-align:right;font-size:26rpx;background-color:;color:#808080;" >{{item.text4}}</text>
+		</view>
+	</block>
+</view>

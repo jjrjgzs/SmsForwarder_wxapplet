@@ -1,0 +1,43 @@
+.setting_list{
+  background-color: #ffffff;
+}
+.item{
+  padding-left: 32rpx;
+  margin-top: 7rpx;
+  margin-bottom: 7px;
+}
+.image_left{
+  width: 50rpx; 
+  height: 50rpx;
+  padding-top: 15rpx;
+}
+.title{   
+  position: absolute;
+  color: #000000;
+  font-size:30rpx;
+  /*font-weight:bold;*/
+  margin-top: 18rpx;
+  padding-left: 30rpx;
+}
+.image_right{
+  position: absolute;
+  margin-top: 20rpx;
+  right: 15rpx;
+  width: 50rpx; 
+  height: 50rpx;
+}
+.switch_right{
+  position: absolute;
+  margin-top: 10rpx;
+  right: 50rpx;
+}
+.line-wide{
+    height: 40rpx;
+    width:100%;
+    background-color: #E0E1E2;
+}
+.line-narrow{
+  height: 1px;
+  width:100%;
+  background-color: #E0E1E2;
+}

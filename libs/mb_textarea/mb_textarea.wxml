@@ -1,0 +1,1 @@
+<textarea hidden="{{!show}}" focus="{{focus}}" disabled="{{readOnly}}" style="{{mb_style}}" maxlength="-1" placeholder="{{placeholder}}" value="{{value}}" bindinput="_onInput" bindfocus="_onFocus" bindblur="_onBlur" bindconfirm="_onConfirm"/>

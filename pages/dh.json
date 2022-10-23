@@ -1,0 +1,15 @@
+{
+"navigationBarTextStyle":"white",
+"navigationBarBackgroundColor":"#0088FF",
+"navigationBarTitleText":"通话记录",
+"enablePullDownRefresh":true,
+"backgroundColor":"#eeeeee",
+"backgroundTextStyle":"dark",
+"usingComponents":{
+"mb_navBar":"/libs/mb_navBar/mb_navBar",
+"mb_dhList":"/libs/mb_dhList/mb_dhList",
+"mb_image":"/libs/mb_image/mb_image",
+"mb_bottomLoading":"/libs/mb_bottomLoading/mb_bottomLoading",
+"mb_input":"/libs/mb_input/mb_input"
+}
+}

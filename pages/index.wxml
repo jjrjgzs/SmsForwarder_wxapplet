@@ -1,0 +1,28 @@
+<view class="container">
+
+	<mb_zxList id="mb_zxList1" show="{{true}}" bindbutton2Tap="在线列表1连接被单击" />
+
+	<mb_floatButton id="mb_floatButton1" show="{{true}}" bot="15px" rig="15px" wid="60rpx" hei="60rpx" color="#FFFFFF" path="/images/tj1.png" bindonTap="悬浮按钮1被单击" />
+
+	<view class="mb_freePanelCover" hidden="{{!mb_freePanel[0]}}">
+		<view style="margin:5px;background-color:#FFFFFF;width:auto;height:440rpx;position:relative;border: 1px solid #E9E9E9;border-radius: 5px;" animation="{{animationData}}">
+		<mb_text id="mb_text1" style="position:absolute;top:56rpx;left:80rpx;width:140rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;overflow:hidden;" mb_style_extra="display:block;width:auto;background-color:;color:#000000" show="{{true}}" value="主机名" />
+
+		<mb_text id="mb_text2" style="position:absolute;top:154rpx;left:80rpx;width:140rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;overflow:hidden;" mb_style_extra="display:block;width:auto;background-color:;color:#000000" show="{{true}}" value="服务器:" />
+
+		<mb_input id="mb_input1" readOnly="{{false}}"style="position:absolute;top:40rpx;left:220rpx;width:420rpx;height:70rpx" mb_style="width:100%;height:70rpx;border-style:solid;border-width:1px;border-color:#D9D9D9;border-radius:5px;box-sizing:border-box;padding:6rpx;font-size:30rpx;background-color:#FFFFFF;color:#000000" type="text" placeholder="" show="{{true}}" password="{{false}}" confirmtype="done" />
+
+		<mb_input id="mb_input2" readOnly="{{false}}"style="position:absolute;top:134rpx;left:220rpx;width:420rpx;height:70rpx" mb_style="width:100%;height:70rpx;border-style:solid;border-width:1px;border-color:#D9D9D9;border-radius:5px;box-sizing:border-box;padding:6rpx;font-size:30rpx;background-color:#FFFFFF;color:#000000" type="text" placeholder="" show="{{true}}" password="{{false}}" confirmtype="done" />
+
+		<mb_button id="mb_button1" mb_style="position:absolute;top:332rpx;left:392rpx;width:320rpx;height:80rpx;line-height:80rpx;font-size:30rpx;border-radius:5px" mb_style_extra="" type="primary" opentype="" plain="{{false}}" show="{{true}}" title="添加" bindonClick="按钮1被单击" />
+
+		<mb_image id="mb_image1" mb_mode="scaleToFill" mb_style="position:absolute;top:-2rpx;left:664rpx;width:64rpx;height:64rpx;border-radius:0px" show="{{true}}" path="/images/gb.png" bindonClick="图片框1被单击" />
+
+		<mb_button id="mb_button2" mb_style="position:absolute;top:332rpx;left:44rpx;width:320rpx;height:80rpx;line-height:80rpx;font-size:30rpx;border-radius:5px" mb_style_extra="" type="warn" opentype="" plain="{{false}}" show="{{true}}" title="测试" bindonClick="按钮2被单击" />
+
+		<mb_input id="mb_input3" readOnly="{{false}}"style="position:absolute;top:228rpx;left:220rpx;width:420rpx;height:70rpx" mb_style="width:100%;height:70rpx;border-style:solid;border-width:1px;border-color:#D9D9D9;border-radius:5px;box-sizing:border-box;padding:6rpx;font-size:30rpx;background-color:#FFFFFF;color:#000000" type="text" placeholder="" show="{{true}}" password="{{false}}" confirmtype="done" />
+
+		<mb_text id="mb_text3" style="position:absolute;top:252rpx;left:80rpx;width:140rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;overflow:hidden;" mb_style_extra="display:block;width:auto;background-color:;color:#000000" show="{{true}}" value="秘 钥:" />
+		</view>
+	</view>
+</view>

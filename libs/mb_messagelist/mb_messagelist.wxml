@@ -1,0 +1,21 @@
+<view class="message_list" hidden="{{!show}}">
+    <block wx:for="{{items}}" wx:key="item">
+        <view class="item {{border?'item-border':''}}"  data-index="{{index}}" bindtap="_optionTap">
+            <view class="item-left" style="width:{{imageWidth}};height:{{imageHeight}};border-radius:{{borderRadius}}">
+                <image src="{{item.path}}" class="logo" style="width:100%;height:100%"/>
+            </view>
+            <view class="item-middle">
+                    <view>
+                        <text class="title" style="white-space: {{wrapType}}">{{item.title}}</text>
+                    </view>
+                    <view>
+                        <text class="message" style="white-space: {{wrapType}}">{{item.message}}</text>
+                    </view>
+            </view>
+            <view class="item_right">
+                <view><text class="time">{{item.time}}</text></view>
+                <view class="mark" wx:if="{{item.count>0}}"><text class="text">{{item.count}}</text></view>
+            </view>
+        </view>
+    </block>
+</view>

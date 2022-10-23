@@ -1,0 +1,3 @@
+<radio-group hidden="{{!show}}" style="{{mb_style}}" bindchange="_onChange">
+    <radio wx:for="{{items}}" wx:key="items" value="{{item.name}}" checked="{{item.checked}}" color="{{radioColor}}" style="margin:0rpx 40rpx 10rpx 0rpx;display:{{radioDirection}}">{{item.value}}</radio>
+</radio-group>

@@ -1,0 +1,16 @@
+<view class="container">
+
+	<view hidden="{{mb_freePanel[0]}}" style="margin:10px;background-color:#FFFFFF;width:auto;height:1000rpx;position:relative;">
+		<mb_text id="mb_text2" style="position:absolute;top:32rpx;left:30rpx;width:146rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;overflow:hidden;" mb_style_extra="display:block;width:auto;background-color:#FFFFFF;color:#000000" show="{{true}}" value="收件人∶" />
+
+		<mb_input id="mb_input1" readOnly="{{false}}"style="position:absolute;top:6rpx;left:180rpx;width:520rpx;height:80rpx" mb_style="width:100%;height:80rpx;border-style:solid;border-width:1px;border-color:#D9D9D9;border-radius:5px;box-sizing:border-box;padding:6rpx;font-size:30rpx;background-color:#E9E9E9;color:#000000" type="text" placeholder="多个手机号用半角分号;分隔" show="{{true}}" password="{{false}}" confirmtype="done" />
+
+		<mb_text id="mb_text1" style="position:absolute;top:134rpx;left:30rpx;width:180rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;overflow:hidden;" mb_style_extra="display:block;width:auto;background-color:#FFFFFF;color:#000000" show="{{true}}" value="短信内容∶" />
+
+		<mb_textarea id="mb_input2" readOnly="{{false}}" style="position:absolute;top:180rpx;left:30rpx;width:670rpx;height:546rpx" mb_style="width:auto;height:546rpx;border-style:solid;border-width:1px;border-color:#D9D9D9;border-radius:5px;box-sizing:border-box;padding:20rpx 6rpx 20rpx 6rpx;font-size:30rpx;background-color:#E9E9E9;color:#000000" placeholder="" show="{{true}}" />
+
+		<mb_button id="mb_button1" mb_style="position:absolute;top:892rpx;left:30rpx;width:670rpx;height:80rpx;line-height:80rpx;font-size:30rpx;border-radius:5px" mb_style_extra="" type="primary" opentype="" plain="{{false}}" show="{{true}}" title="发送" bindonClick="按钮1被单击" />
+
+		<mb_radio id="mb_radio1" mb_style="position:absolute;top:750rpx;left:28rpx;width:auto;height:auto;font-size:30rpx;color:#000000" radioColor="#09BB07" radioDirection="block" show="{{true}}" bindonChange="单选框1选中项被改变" />
+	</view>
+</view>

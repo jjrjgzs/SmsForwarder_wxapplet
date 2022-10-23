@@ -1,0 +1,10 @@
+<view hidden="{{!show}}">
+	<block wx:for="{{items}}" wx:key="item">
+		<view style="margin:10px;background-color:#FFFFFF;width:auto;height:170rpx;position:relative;border: 1px solid #C0C0C0;border-radius: 5px;overflow: hidden;" data-index="{{index}}" bindtap="onItemTap">
+			<text style="position:absolute;top:8rpx;left:10rpx;width:340rpx;height:44rpx;line-height:44rpx;text-align:left;font-size:30rpx;background-color:;color:#0000FF;" >{{item.text1}}</text>
+			<text style="position:absolute;top:58rpx;left:10rpx;width:686rpx;height:auto;text-align:left;font-size:26rpx;background-color:;color:#000000;" >{{item.text2}}</text>
+			<text style="position:absolute;top:10rpx;left:364rpx;width:286rpx;height:38rpx;line-height:38rpx;text-align:right;font-size:26rpx;background-color:;color:#808080;" >{{item.text3}}</text>
+			<image style="position:absolute;top:6rpx;left:660rpx;width:40rpx;height:40rpx;border-radius:1px" src="{{item.image2}}" />
+		</view>
+	</block>
+</view>

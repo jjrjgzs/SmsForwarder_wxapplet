@@ -1,0 +1,1 @@
+<image hidden="{{!show}}" src="{{path}}" mode="{{mb_mode}}" style="{{mb_style}}" show-menu-by-longpress="{{true}}" bindtap="_onClick" />

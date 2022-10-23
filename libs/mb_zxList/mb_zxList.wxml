@@ -1,0 +1,10 @@
+<view hidden="{{!show}}">
+	<block wx:for="{{items}}" wx:key="item">
+		<view style="margin:10px;background-color:#FFFFFF;width:auto;height:140rpx;position:relative;border: 1px solid #C0C0C0;border-radius: 5px;overflow: hidden;" data-index="{{index}}" bindtap="onItemTap">
+			<image style="position:absolute;top:10rpx;left:2rpx;width:120rpx;height:120rpx;border-radius:10px" src="{{item.image1}}" />
+			<text style="position:absolute;top:28rpx;left:122rpx;width:378rpx;height:40rpx;line-height:40rpx;text-align:left;font-size:30rpx;background-color:;color:#000000;" >{{item.text1}}</text>
+			<text style="position:absolute;top:74rpx;left:122rpx;width:378rpx;height:40rpx;line-height:40rpx;text-align:left;font-size:30rpx;background-color:;color:#808080;" >{{item.text2}}</text>
+			<button style="position:absolute;top:30rpx;left:508rpx;width:180rpx;height:80rpx;line-height:80rpx;font-size:30rpx;border-radius:5px" type="primary" plain="{{false}}" data-index="{{index}}" catchtap="button2Tap" >{{item.button2}}</button>
+		</view>
+	</block>
+</view>

@@ -1,0 +1,9 @@
+<view hidden="{{!show}}">
+	<block wx:for="{{items}}" wx:key="item">
+		<view style="margin:10px;background-color:#FFFFFF;width:auto;height:116rpx;box-sizing:border-box;position:relative;border: 1px solid #C0C0C0;border-radius: 5px;overflow: hidden;" data-index="{{index}}" bindtap="onItemTap">
+			<image mode="aspectFit" style="position:absolute;top:6rpx;left:8rpx;width:100rpx;height:100rpx;border-radius:10px" src="{{item.image1}}" />
+			<text style="position:absolute;top:14rpx;left:140rpx;width:260rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;background-color:;color:#000000;" >{{item.text1}}</text>
+			<text style="position:absolute;top:62rpx;left:140rpx;width:260rpx;height:38rpx;line-height:38rpx;text-align:left;font-size:30rpx;background-color:;color:#000000;" >{{item.text2}}</text>
+		</view>
+	</block>
+</view>

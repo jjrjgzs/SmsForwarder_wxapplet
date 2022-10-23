@@ -1,0 +1,16 @@
+{
+"navigationBarTextStyle":"white",
+"navigationBarBackgroundColor":"#0088FF",
+"navigationBarTitleText":"主机列表",
+"enablePullDownRefresh":false,
+"backgroundColor":"#eeeeee",
+"backgroundTextStyle":"dark",
+"usingComponents":{
+"mb_zxList":"/libs/mb_zxList/mb_zxList",
+"mb_floatButton":"/libs/mb_floatButton/mb_floatButton",
+"mb_text":"/libs/mb_text/mb_text",
+"mb_input":"/libs/mb_input/mb_input",
+"mb_button":"/libs/mb_button/mb_button",
+"mb_image":"/libs/mb_image/mb_image"
+}
+}

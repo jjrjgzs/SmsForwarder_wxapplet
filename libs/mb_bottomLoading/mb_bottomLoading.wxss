@@ -1,0 +1,13 @@
+.show_loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  font-size: 30rpx;
+}
+ 
+.show_loading image{
+  margin-right: 10rpx;
+  width: 35rpx;
+  height: 35rpx;
+}

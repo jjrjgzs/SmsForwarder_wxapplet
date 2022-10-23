@@ -1,0 +1,16 @@
+page {
+background-color:#F8F8F8;
+}
+
+/* 悬浮面板背景遮罩层样式 */
+.mb_freePanelCover {
+ position: fixed;
+ width: 100%;
+ height: 100%;
+ top: 0;
+ background: rgba(0, 0, 0, 0.8);
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+ z-index:999;
+}

@@ -1,0 +1,1 @@
+<input type="{{type}}" hidden="{{!show}}" focus="{{focus}}" disabled="{{readOnly}}" style="{{mb_style}}" password="{{password}}" placeholder="{{placeholder}}" value="{{value}}" confirm-type="{{confirmtype}}" bindinput="_onInput" bindfocus="_onFocus" bindblur="_onBlur" bindconfirm="_onConfirm"/>

@@ -1,0 +1,82 @@
+.message_list{
+  background-color: #f2f2f2;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;/*横向布局*/
+  justify-content: space-between;
+  padding: 8rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #E0E1E2;
+}
+
+.item-border {
+  margin-left: 8rpx;
+  margin-right: 8rpx;
+  margin-top: 8rpx;
+  border-right: 1rpx solid #E0E1E2;
+  border-radius: 5rpx;
+}
+
+.item-left{
+    overflow: hidden; 
+}
+
+.logo{
+    background-color: #eeeeee;
+}
+
+.item-middle{
+    flex: 1;
+    margin-left: 8rpx;
+    margin-right: 8rpx;
+    overflow: hidden;
+    position: relative;
+    height:auto;
+    display: flex;/*弹性盒子布局*/
+    flex-direction: column;/*排列方式column为纵向排列，row为横向排列*/
+    justify-content: center; /*垂直对齐方式*/
+    align-items: flex-start;/*水平对齐方式*/
+}
+
+.title{
+    color: #000000;
+    /*font-weight:bold;*/
+    font-size: 30rpx;
+    /*text-overflow: ellipsis;*/
+    /*white-space: pre-wrap;*/  /*pre-wrap显示全部内容，nowrap只显示一行*/
+}
+
+.message{
+    color: #808080;
+    font-size: 30rpx;
+    /*text-overflow: ellipsis;*/
+    /*white-space: pre-wrap;*/
+}
+
+.item_right{
+    padding-top: 0rpx;
+    overflow: hidden; 
+}
+
+.time{
+    color:#808080;
+    font-size: 26rpx;
+}
+
+.mark{
+    position:relative;
+    left:5rpx;
+    margin-top: 10rpx;
+    padding: 2rpx;
+    background-color:#F74C31; 
+    text-align: center;
+    font-size: 26rpx; 
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius:50px; 
+    color: #ffffff;
+    display:table-cell;
+}
