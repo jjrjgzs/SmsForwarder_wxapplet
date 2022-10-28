@@ -18,6 +18,7 @@
     "uploadFile": 60000
   }, 
   "sitemapLocation": "sitemap.json",
+"lazyCodeLoading":"requiredComponents",
 "tabBar": {
 "backgroundColor":"#FFFFFF",
 "color":"#7A7E83",

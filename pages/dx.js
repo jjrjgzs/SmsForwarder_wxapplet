@@ -1,4 +1,5 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 数组操作 = require("../libs/mb_array.js");
 var 转换操作 = require("../libs/mb_convert.js");
 var 时间操作 = require("../libs/mb_date.js");
@@ -6,8 +7,7 @@ var 窗口操作 = require("../libs/mb_navigate.js");
 var 读写设置 = require("../libs/mb_storage.js");
 var 对话框 = require("../libs/mb_dialog/mb_dialog.js");
 var 网络操作 = require("../libs/mb_request/mb_request.js");
-var 加密操作 = require("../libs/mb_encrypt/mb_encrypt.js");
-var 顶部选项卡1;var 对话框1;var 网络操作1;var 编辑框1;var 短信列表框1;var 图片框1;var 底部加载条1;var 图片框2;var 加密操作1;
+var 顶部选项卡1;var 对话框1;var 网络操作1;var 编辑框1;var 短信列表框1;var 图片框1;var 底部加载条1;var 图片框2;
 	var 接口={}
 	var 页数=1
 	var 顶部选项=0
@@ -20,6 +20,7 @@ function 重新获取数据(){
 	if(读写设置.读取设置("查看短信")=="是" ){
 		读写设置.保存设置("查看短信","否")
 		}else{
+		公用模块.获取签名()
 		页数=1
 		短信列表框1.清空项目()
 		底部加载条1.隐藏加载条()
@@ -34,7 +35,14 @@ function 重新获取数据(){
 	}
 }
 function 短信_被显示(){
-	重新获取数据()
+	if(读写设置.读取设置("秘钥") !="" && 读写设置.读取设置("服务器")!="" ){
+
+		重新获取数据()
+		}else{
+		短信列表框1.清空项目()
+		底部加载条1.隐藏加载条()
+		对话框1.弹出提示("请先连接主机!")
+	}
 }
 
 function 网络操作1_发起请求完毕(状态码,返回数据){
@@ -42,7 +50,7 @@ function 网络操作1_发起请求完毕(状态码,返回数据){
 	对话框1.关闭等待框()
 	长度=数组操作.取成员数(返回数据.data)
 
-	if(状态码==0 ){
+	if(返回数据.code==200 ){
 		switch(顶部选项){
 			case 0 :
 				if(长度<1 ){
@@ -246,7 +254,6 @@ onLoad: function (options) {
 图片框1 = this.selectComponent("#mb_image1")
 底部加载条1 = this.selectComponent("#mb_bottomLoading1")
 图片框2 = this.selectComponent("#mb_image2")
-加密操作1 = new 加密操作.加密操作()
 短信_被创建(options)
 },
 

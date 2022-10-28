@@ -1,4 +1,5 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 读写设置 = require("../libs/mb_storage.js");
 var 对话框 = require("../libs/mb_dialog/mb_dialog.js");
 var 网络操作 = require("../libs/mb_request/mb_request.js");

@@ -1,4 +1,5 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 数组操作 = require("../libs/mb_array.js");
 var 转换操作 = require("../libs/mb_convert.js");
 var 时间操作 = require("../libs/mb_date.js");
@@ -22,6 +23,7 @@ function 电话_被创建(启动参数){
 	网络操作1.置请求头({"content-type": "application/json;charset=UTF-8"})
 }
 function 重新获取数据(){
+	公用模块.获取签名()
 	电话列表1.清空项目()
 	底部加载条1.隐藏加载条()
 	页数=1
@@ -30,7 +32,16 @@ function 重新获取数据(){
 	网络操作1.发起请求(读写设置.读取设置("服务器")+"/call/query",接口,"POST")
 }
 function 电话_被显示(){
-	重新获取数据()
+
+	if(读写设置.读取设置("秘钥") !="" && 读写设置.读取设置("服务器")!="" ){
+
+		重新获取数据()
+		}else{
+		电话列表1.清空项目()
+	    底部加载条1.隐藏加载条()
+		对话框1.弹出提示("请先连接主机!")
+	}
+
 }
 
 function 网络操作1_发起请求完毕(状态码,返回数据){
@@ -38,7 +49,7 @@ function 网络操作1_发起请求完毕(状态码,返回数据){
 	对话框1.关闭等待框()
 	长度=数组操作.取成员数(返回数据.data)
 
-	if(状态码==0 ){
+	if(返回数据.code==200 ){
 		switch(顶部选项){
 			case 0 :
 				if(长度<1 ){
@@ -139,7 +150,9 @@ function 读取所有(数据){
 						电话列表1.添加项目("/images/hr.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 					break;
 				}
-
+				if(json.data[计次].sim_id > 1 ){
+					电话列表1.添加项目("/images/hr.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
+				}
 			break;
 			case 2 :
 				switch(json.data[计次].sim_id){
@@ -153,6 +166,9 @@ function 读取所有(数据){
 						电话列表1.添加项目("/images/hc.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 					break;
 				}
+				if(json.data[计次].sim_id > 1 ){
+					电话列表1.添加项目("/images/hc.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
+				}
 			break;
 			case 3 :
 				switch(json.data[计次].sim_id){
@@ -165,6 +181,9 @@ function 读取所有(数据){
 					case -1 :
 						电话列表1.添加项目("/images/wj.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 					break;
+				}
+				if(json.data[计次].sim_id > 1 ){
+					电话列表1.添加项目("/images/wj.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 				}
 			break;
 		}
@@ -187,6 +206,9 @@ function 读取呼入(数据){
 				电话列表1.添加项目("/images/hr.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 			break;
 		}
+		if(json.data[计次].sim_id > 1 ){
+			电话列表1.添加项目("/images/hr.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
+		}
 		计次=计次+1
 	}
 }
@@ -206,6 +228,9 @@ function 读取呼出(数据){
 				电话列表1.添加项目("/images/hc.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 			break;
 		}
+		if(json.data[计次].sim_id > 1 ){
+			电话列表1.添加项目("/images/hc.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
+		}
 		计次=计次+1
 	}
 }
@@ -224,6 +249,9 @@ function 读取未接(数据){
 			case -1 :
 				电话列表1.添加项目("/images/wj.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 			break;
+		}
+		if(json.data[计次].sim_id > 1 ){
+			电话列表1.添加项目("/images/wj.png",json.data[计次].name,json.data[计次].number,时间操作.时间到文本(时间操作.时间戳到时间(转换操作.到数值(json.data[计次].dateLong))),"/images/simx.png","通话时间:"+秒到时间(json.data[计次].duration),"")
 		}
 		计次=计次+1
 	}
@@ -318,11 +346,11 @@ function 编辑框1_按下某键(键代码){
 	电话列表1.清空项目()
 
 	if(编辑框1.取内容()=="" ){
+		图片框1.置可视(false)
 		是否搜索=false
-
 		接口={"data": {"type": 0,"page_num": 1,"page_size": 10,"phone_number": ""},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 		}else{
-
+		图片框1.置可视(true)
 		是否搜索=true
 		接口={"data": {"type": 0,"page_num": 1,"page_size": 10,"phone_number": 编辑框1.取内容()},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 	}
@@ -333,6 +361,7 @@ function 图片框1_被单击(){
 	if(是否搜索==true ){
 		电话列表1.清空项目()
 		编辑框1.置内容("")
+		图片框1.置可视(false)
 		是否搜索=false
 
 		接口={"data": {"type": 0,"page_num": 1,"page_size": 10,"phone_number": ""},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}

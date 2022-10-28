@@ -1,36 +1,26 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 文本操作 = require("../libs/mb_string.js");
 var 数组操作 = require("../libs/mb_array.js");
 var 转换操作 = require("../libs/mb_convert.js");
-var 时间操作 = require("../libs/mb_date.js");
 var 窗口操作 = require("../libs/mb_navigate.js");
 var 读写设置 = require("../libs/mb_storage.js");
 var 导航栏 = require("../libs/mb_tabBar/mb_tabBar.js");
 var 网络操作 = require("../libs/mb_request/mb_request.js");
 var 对话框 = require("../libs/mb_dialog/mb_dialog.js");
 var 菜单 = require("../libs/mb_menu/mb_menu.js");
-var 导航栏1;var 在线列表1;var 悬浮按钮1;var 标签1;var 标签2;var 编辑框1;var 编辑框2;var 按钮1;var 图片框1;var 按钮2;var 网络操作1;var 对话框1;var 网络操作2;var 编辑框3;var 标签3;var 菜单1;
+var 导航栏1;var 在线列表1;var 悬浮按钮1;var 标签1;var 标签2;var 编辑框1;var 编辑框2;var 按钮1;var 图片框1;var 按钮2;var 网络操作1;var 对话框1;var 编辑框3;var 标签3;var 菜单1;
 	var 当前项目=0
 	var 是否编辑=false
 	var 是否按钮=false
 	var 是否测试=false
-	var 已连主机=""
-	var 已连秘钥=""
-	import CryptoJS from "../files/crypto.js";
-	var hash = CryptoJS.HmacSHA256("时间戳" + "\n" + "sign", "sign");
+
+
 function 主窗口_被创建(启动参数){
 	初始化列表()
 	网络操作1.置请求头({"content-type": "application/json;charset=UTF-8"})
 }
-function 获取签名(){
-	var 签名=""
-	var 秘钥=读写设置.读取设置("秘钥")
-	var 时间戳=转换操作.到文本(时间操作.取时间戳(时间操作.取当前日期时间()))
 
-	签名=CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(时间戳 + "\n" + 秘钥, 秘钥))
-	读写设置.保存设置("time",时间戳)
-	读写设置.保存设置("sign",encodeURIComponent(签名))
-}
 function 初始化列表(){
 	var 计次=0
 	var 分割
@@ -52,7 +42,7 @@ function 初始化列表(){
 function 按钮1_被单击(){
 	var 主机=""
 	if(编辑框1.取内容()=="" || 编辑框2.取内容()=="" || 编辑框3.取内容()=="" ){
-		对话框1.信息框("提示","信息不完整!")
+		对话框1.弹出提示("请输入完整数据!")
 		}else{
 		if(是否编辑==true ){
 			是否编辑=false
@@ -89,27 +79,40 @@ function 悬浮按钮1_被单击(){
 }
 
 function 图片框1_被单击(){
+	var 计次=0
+	while(计次<在线列表1.取项目总数()){
+		if(在线列表1.取连接标题(计次)=="已连接" ){
+			读写设置.保存设置("服务器",在线列表1.取信息标题(计次))
+			读写设置.保存设置("秘钥",在线列表1.取项目标记(计次))
+			公用模块.获取签名()
+		}
+		计次=计次+1
+	}
 	是否测试=false
 	窗口操作.隐藏面板(0,2)
 }
 
 function 按钮2_被单击(){
-	已连秘钥=读写设置.读取设置("秘钥")
-	读写设置.保存设置("秘钥",编辑框3.取内容())
-	获取签名()
-	是否测试=true
-	读写设置.保存设置("秘钥",已连秘钥)
-	var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
-	网络操作1.发起请求(编辑框2.取内容()+"/config/query",data,"POST")
-
+	if(编辑框2.取内容()=="" || 编辑框3.取内容()=="" ){
+		对话框1.弹出提示("请输入完整数据!")
+		}else{
+		读写设置.保存设置("秘钥",编辑框3.取内容())
+		公用模块.获取签名()
+		是否测试=true
+		var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
+		网络操作1.发起请求(编辑框2.取内容()+"/config/query",data,"POST")
+	}
 }
 
 function 网络操作1_发起请求完毕(状态码,返回数据){
 	var 计次=0
 
 
-	if(文本操作.寻找文本(转换操作.json转文本(返回数据),"200",0) != -1 ){
+	if(返回数据.code==200 ){
 		if(是否测试==true ){
+			if(返回数据.data.extra_device_mark !="" ){
+				编辑框1.置内容(返回数据.data.extra_device_mark)
+			}
 			是否测试=false
 			对话框1.弹出提示2("连接成功")
 			}else{
@@ -127,8 +130,7 @@ function 网络操作1_发起请求完毕(状态码,返回数据){
 			}
 			读写设置.保存设置("sim-1",文本操作.子文本替换(返回数据.data.extra_sim1,"\\+86",""))
 	        读写设置.保存设置("sim-2",文本操作.子文本替换(返回数据.data.extra_sim2,"\\+86",""))
-			已连主机=读写设置.读取设置("服务器")
-			已连秘钥=读写设置.读取设置("秘钥")
+
 			if(是否按钮==true ){
 				是否按钮=false
 				对话框1.弹出提示2("连接成功")
@@ -137,12 +139,18 @@ function 网络操作1_发起请求完毕(状态码,返回数据){
 		}else{
 		是否按钮=false
 		是否测试=false
-		读写设置.保存设置("秘钥",已连秘钥)
-        读写设置.保存设置("服务器",已连主机)
+		读写设置.保存设置("服务器","")
 		if(返回数据.msg==undefined ){
 			对话框1.弹出提示("连接失败,错误代码∶404")
 			}else{
 			对话框1.弹出提示("连接失败,错误代码∶"+返回数据.msg)
+		}
+		while(计次<在线列表1.取项目总数()){
+			if(在线列表1.取连接标题(计次)=="已连接" ){
+				在线列表1.置连接标题(计次,"操作")
+				在线列表1.置头像地址(计次,"/images/sy.png")
+			}
+			计次=计次+1
 		}
 	}
 
@@ -164,7 +172,7 @@ function 菜单1_菜单项被单击(菜单项索引){
 			是否按钮=true
 			读写设置.保存设置("服务器",在线列表1.取信息标题(当前项目))
 			读写设置.保存设置("秘钥",在线列表1.取项目标记(当前项目))
-			获取签名()
+			公用模块.获取签名()
 			var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
 			网络操作1.发起请求(读写设置.读取设置("服务器")+"/config/query",data,"POST")
 		break;
@@ -203,7 +211,7 @@ function 在线列表1_连接被单击(项目索引){
 function 主窗口_被显示(){
 
 	if(读写设置.读取设置("秘钥") !="" && 读写设置.读取设置("服务器")!="" ){
-		获取签名()
+		公用模块.获取签名()
 		var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
 		网络操作1.发起请求(读写设置.读取设置("服务器")+"/config/query",data,"POST")
 	}
@@ -240,7 +248,6 @@ onLoad: function (options) {
 按钮2 = this.selectComponent("#mb_button2")
 网络操作1 = new 网络操作.网络操作(网络操作1_发起请求完毕)
 对话框1 = new 对话框.对话框(null,对话框1_询问框被单击)
-网络操作2 = new 网络操作.网络操作(null)
 编辑框3 = this.selectComponent("#mb_input3")
 标签3 = this.selectComponent("#mb_text3")
 菜单1 = new 菜单.菜单(菜单1_菜单项被单击,null)

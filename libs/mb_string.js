@@ -39,6 +39,7 @@ function 取文本中间(str,start,len){
 }
 
 function 取文本左边(str,len){
+    /*
     if(isNaN(len)||len==null)
     {
         len = str.length;
@@ -47,11 +48,12 @@ function 取文本左边(str,len){
         {
             len = str.length;
         }
-    }
+    }*/
     return str.substr(0,len);
 }
 
 function 取文本右边(str,len){
+/*
     if(isNaN(len)||len==null)
     {
         len = str.length;
@@ -60,7 +62,7 @@ function 取文本右边(str,len){
         {
             len = str.length;
         }
-    }
+    }*/
     return str.substring(str.length-len,str.length);
 }
 

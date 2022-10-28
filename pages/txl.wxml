@@ -9,7 +9,7 @@
 			</view>
 		</view>
 
-		<mb_image id="mb_image1" mb_mode="scaleToFill" mb_style="position:absolute;top:20rpx;left:660rpx;width:40rpx;height:40rpx;border-radius:0px" show="{{true}}" path="/images/icongbb.png" bindonClick="图片框1被单击" />
+		<mb_image id="mb_image1" mb_mode="scaleToFill" mb_style="position:absolute;top:20rpx;left:660rpx;width:40rpx;height:40rpx;border-radius:0px" show="{{false}}" path="/images/icongbb.png" bindonClick="图片框1被单击" />
 	</view>
 
 	<mb_dh6List id="mb_dh6List1" show="{{true}}" bindonItemTap="通讯录列表1项目被单击" />

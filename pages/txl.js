@@ -1,4 +1,5 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 数组操作 = require("../libs/mb_array.js");
 var 转换操作 = require("../libs/mb_convert.js");
 var 数学操作 = require("../libs/mb_math.js");
@@ -14,14 +15,23 @@ function 通讯录_被创建(启动参数){
 	网络操作1.置请求头({"content-type": "application/json;charset=UTF-8"})
 }
 function 重新获取数据(){
-
+	公用模块.获取签名()
 	底部加载条1.隐藏加载条()
+	通讯录列表1.清空项目()
 	var data={"data": {"phone_number": "","name": "",},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 	对话框1.显示等待框("读取中...")
 	网络操作1.发起请求(读写设置.读取设置("服务器")+"/contact/query",data,"POST")
 }
 function 通讯录_被显示(){
-	重新获取数据()
+
+	if(读写设置.读取设置("秘钥") !="" && 读写设置.读取设置("服务器")!="" ){
+
+		重新获取数据()
+		}else{
+		底部加载条1.隐藏加载条()
+		通讯录列表1.清空项目()
+		对话框1.弹出提示("请先连接主机!")
+	}
 }
 
 function 网络操作1_发起请求完毕(状态码,返回数据){
@@ -30,12 +40,13 @@ function 网络操作1_发起请求完毕(状态码,返回数据){
 	对话框1.关闭等待框()
 	通讯录列表1.清空项目()
 
-	if(状态码==0 ){
+	if(返回数据.code==200 ){
 		while(计次<数组操作.取成员数(返回数据.data)){
 			头像="https://ui-avatars.com/api/?name="+返回数据.data[计次].name+"&length=1&background=random&size=128&bold=true&color=ff0000"
 			通讯录列表1.添加项目(头像,返回数据.data[计次].name,返回数据.data[计次].phone_number,"")
 			计次=计次+1
 		}
+
 		}else{
 
 		对话框1.弹出提示("服务器连接失败!")
@@ -75,7 +86,7 @@ function 拨打电话(号码){
 function 图片框1_被单击(){
 
 	编辑框1.置内容("")
-
+	图片框1.置可视(false)
 	var data={"data": {"phone_number": "","name": "",},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 	对话框1.显示等待框("读取中...")
 	网络操作1.发起请求(读写设置.读取设置("服务器")+"/contact/query",data,"POST")
@@ -86,10 +97,10 @@ function 编辑框1_按下某键(键代码){
 	var data={}
 
 	if(编辑框1.取内容()=="" ){
-
+		图片框1.置可视(false)
 		data ={"data": {"phone_number": "","name": "",},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 		}else{
-
+		图片框1.置可视(true)
 		if(转换操作.到文本(数学操作.取整数(转换操作.到数值(编辑框1.取内容()))) !="NaN" ){
 			data={"data": {"phone_number": 编辑框1.取内容(),"name": "",},"timestamp": 读写设置.读取设置("time"),"sign": 读写设置.读取设置("sign")}
 			}else{

@@ -1,10 +1,10 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 窗口操作 = require("../libs/mb_navigate.js");
 var 读写设置 = require("../libs/mb_storage.js");
 var 对话框 = require("../libs/mb_dialog/mb_dialog.js");
 var 剪贴板 = require("../libs/mb_clipboard/mb_clipboard.js");
-var 加密操作 = require("../libs/mb_encrypt/mb_encrypt.js");
-var 标签2;var 编辑框1;var 标签1;var 编辑框2;var 按钮1;var 对话框1;var 按钮2;var 剪贴板1;var 加密操作1;
+var 标签2;var 编辑框1;var 标签1;var 编辑框2;var 按钮1;var 对话框1;var 按钮2;var 剪贴板1;
 function 查看短信_被创建(启动参数){
 	编辑框1.置内容(启动参数.发件人)
 	编辑框2.置内容(读写设置.读取设置("短信内容"))
@@ -39,7 +39,6 @@ onLoad: function (options) {
 对话框1 = new 对话框.对话框(null,null)
 按钮2 = this.selectComponent("#mb_button2")
 剪贴板1 = new 剪贴板.剪贴板(null,null)
-加密操作1 = new 加密操作.加密操作()
 查看短信_被创建(options)
 },
 

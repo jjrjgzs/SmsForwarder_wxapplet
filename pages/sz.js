@@ -1,4 +1,5 @@
 
+var 公用模块 = require("../libs/gongyongmokuai.js");
 var 文本操作 = require("../libs/mb_string.js");
 var 窗口操作 = require("../libs/mb_navigate.js");
 var 读写设置 = require("../libs/mb_storage.js");
@@ -14,11 +15,11 @@ function 设置_被创建(启动参数){
 	窗口操作.隐藏面板(0,1)
 }
 function 重新获取数据(){
-	var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
 
+	公用模块.获取签名()
 	消息列表框1.清空项目()
 	设置列表框1.清空项目()
-
+	var data={ "data": {},"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
 	switch(顶部选项){
 	case 0 :
 
@@ -33,25 +34,36 @@ function 重新获取数据(){
 	}
 }
 function 设置_被显示(){
-	重新获取数据()
+
+	if(读写设置.读取设置("秘钥") !="" && 读写设置.读取设置("服务器")!="" ){
+
+		重新获取数据()
+		}else{
+		消息列表框1.清空项目()
+	    设置列表框1.清空项目()
+		对话框1.弹出提示("请先连接主机!")
+	}
 }
 function 网络操作1_发起请求完毕(状态码,返回数据){
-
 	对话框1.关闭等待框()
-	if(状态码==0 ){
+	if(返回数据.code==200 ){
 		switch(顶部选项){
 			case 0 :
 
 				消息列表框1.添加项目("/images/bb.png","设备备注",返回数据.data.extra_device_mark,"","","")
 				消息列表框1.添加项目("/images/bb.png","SIM1备注",文本操作.子文本替换(返回数据.data.extra_sim1,"\\+86",""),"点击显示实时SIM号码","","")
 				消息列表框1.添加项目("/images/bb.png","SIM2备注",文本操作.子文本替换(返回数据.data.extra_sim2,"\\+86",""),"点击显示实时SIM号码","","")
-				if(消息列表框1.取项目信息(2)!="" ){
+
+				if(消息列表框1.取项目信息(1)!="" ){
 					sim_1=返回数据.data.sim_info_list[0].carrier_name+"_"+文本操作.子文本替换(返回数据.data.sim_info_list[0].number,"\\+86","")
+					}else{
+					sim_1=""
+				}
+				if(消息列表框1.取项目信息(2)!="" ){
 					sim_2=返回数据.data.sim_info_list[1].carrier_name+"_"+文本操作.子文本替换(返回数据.data.sim_info_list[1].number,"\\+86","")
 					}else{
-					sim_1=返回数据.data.sim_info_list[0].carrier_name+"_"+文本操作.子文本替换(返回数据.data.sim_info_list[0].number,"\\+86","")
+					sim_2=""
 				}
-
 				if(返回数据.data.enable_api_battery_query==true ){
 					设置列表框1.添加项目("/images/xq.png","远程查电量",false,true,true,"")
 					}else{
@@ -132,7 +144,8 @@ function 顶部选项卡1_项目被单击(项目索引){
 
 		break;
 		case 2 :
-
+			编辑框1.置内容(读写设置.读取设置("网卡MAC"))
+			编辑框2.置内容(读写设置.读取设置("广播地址"))
 			设置列表框1.置可视(false)
 			消息列表框1.置可视(false)
 			标签2.置可视(true)
@@ -161,6 +174,8 @@ function 设置列表框1_开关被单击(项目索引,开关状态){
 function 按钮1_被单击(){
 	var data= {"data": {"mac": 编辑框1.取内容(),"ip": 编辑框2.取内容() },"timestamp": 读写设置.读取设置("time"),"sign":读写设置.读取设置("sign")}
 	对话框1.显示等待框("读取中...")
+	读写设置.保存设置("网卡MAC",编辑框1.取内容())
+	读写设置.保存设置("广播地址",编辑框2.取内容())
 	网络操作1.发起请求(读写设置.读取设置("服务器")+"/wol/send",data,"POST")
 }
 
